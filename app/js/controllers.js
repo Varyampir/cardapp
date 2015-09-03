@@ -6,15 +6,23 @@
         .module('controllers', [])
         .controller('apiCallController', ['$scope', 'apiServices',
             function($scope, apiServices) {
+
+                $scope.characters = {};
                 console.log('Is this hitting?');
                 var c = apiServices.getApi();
                 c.get(function(data){
                     console.log(data);
+                    $scope.characters = data.data.results;
+                        console.log($scope.characters);
+
                 },
                 function(){
                     console.log("Your api call has failed.");
                 })
+
             }]);
+
+
 })();
 
 

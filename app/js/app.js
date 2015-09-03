@@ -15,8 +15,25 @@ var heroesApp = angular
     .module('heroesApp', [
         'controllers',
         'services',
-        'ngResource'
+        'ngResource',
+        'ui.router'
+    ])
+
+.config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider.otherwise('');
+
+        $stateProvider
+            .state('home', {
+                url: '',
+                templateUrl: 'partials/home.html',
+                controller: 'apiCallController'
+            })
+
+    }
     ]);
+
 
     //.config('$resourceProvider',
     //    function($resourceProvider){
